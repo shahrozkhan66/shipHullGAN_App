@@ -142,7 +142,7 @@ np.random.seed(42)
 
 i = 0
 
-latentSpace = loadmat('/Users/shahrozkhan/Documents/Compute Maritime/code/latentSpace.mat')
+latentSpace = loadmat('latentSpace.mat')
 KLM = latentSpace['KLM']
 KLS = latentSpace['KLS']
 KLU = latentSpace['KLU']
