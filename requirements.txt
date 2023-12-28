@@ -1,4 +1,5 @@
-dash
+gunicorn==20.1.0
+dash==1.21.0
 plotly
 numpy
 scipy
