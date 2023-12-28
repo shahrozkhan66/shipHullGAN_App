@@ -136,7 +136,7 @@ def plot_design(deisgn_3D: np.ndarray, fig_title: str):
     return data, layout
 
 app = dash.Dash(__name__)
-
+server = app.server
 # Initial variables
 np.random.seed(42)
 
