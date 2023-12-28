@@ -152,101 +152,107 @@ initial_logs = "Message logs:\n"
 
 # Update the layout with the chat/text box, send button, and message logs
 app.layout = html.Div([
-    html.Div([
-        html.Div([
-            # This div will contain the 3D plot
-            html.Div([
-                dcc.Graph(id='3d-plot', style={'height': '90vh'}),
-            ], style={'display': 'inline-block', 'width': '85%'}),
-
-            # This div will contain the sliders
+    dcc.Loading(
+        id="loading",
+        type="circle",  # can also use "default" or "cube"
+        children=[
             html.Div([
                 html.Div([
-                    html.Label('Parameter 1'),
-                    dcc.Slider(id='slider-1', min=KLS[0,0], max=KLS[0,1], step=0.01, value=KLS[0,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[0,0], KLS[0,1], 3)}),
-                ], style={'padding': '5px'}),
-
+                    # This div will contain the 3D plot
+                    html.Div([
+                        dcc.Graph(id='3d-plot', style={'height': '90vh'}),
+                    ], style={'display': 'inline-block', 'width': '85%'}),
+        
+                    # This div will contain the sliders
+                    html.Div([
+                        html.Div([
+                            html.Label('Parameter 1'),
+                            dcc.Slider(id='slider-1', min=KLS[0,0], max=KLS[0,1], step=0.01, value=KLS[0,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[0,0], KLS[0,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 2'),
+                            dcc.Slider(id='slider-2', min=KLS[1,0], max=KLS[1,1], step=0.01, value=KLS[1,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[1,0], KLS[1,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 3'),
+                            dcc.Slider(id='slider-3', min=KLS[2,0], max=KLS[2,1], step=0.01, value=KLS[2,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[2,0], KLS[2,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 4'),
+                            dcc.Slider(id='slider-4', min=KLS[3,0], max=KLS[3,1], step=0.01, value=KLS[3,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[3,0], KLS[3,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 5'),
+                            dcc.Slider(id='slider-5', min=KLS[4,0], max=KLS[4,1], step=0.01, value=KLS[4,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[4,0], KLS[4,1], 3)}),
+                        ], style={'padding': '5px'}),
+                        
+                        html.Div([
+                            html.Label('Parameter 6'),
+                            dcc.Slider(id='slider-6', min=KLS[5,0], max=KLS[5,1], step=0.01, value=KLS[5,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[5,0], KLS[5,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 7'),
+                            dcc.Slider(id='slider-7', min=KLS[6,0], max=KLS[6,1], step=0.01, value=KLS[6,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[6,0], KLS[6,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 8'),
+                            dcc.Slider(id='slider-8', min=KLS[7,0], max=KLS[7,1], step=0.01, value=KLS[7,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[7,0], KLS[7,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 9'),
+                            dcc.Slider(id='slider-9', min=KLS[8,0], max=KLS[8,1], step=0.01, value=KLS[8,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[8,0], KLS[8,1], 3)}),
+                        ], style={'padding': '5px'}),
+        
+                        html.Div([
+                            html.Label('Parameter 10'),
+                            dcc.Slider(id='slider-10', min=KLS[9,0], max=KLS[9,1], step=0.01, value=KLS[9,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[9,0], KLS[9,1], 3)}),
+                        ], style={'padding': '5px'}),
+                    ], style={'display': 'inline-block', 'width': '15%', 'vertical-align': 'top'}),
+                ], style={'display': 'flex', 'justifyContent': 'center'}),
+        
                 html.Div([
-                    html.Label('Parameter 2'),
-                    dcc.Slider(id='slider-2', min=KLS[1,0], max=KLS[1,1], step=0.01, value=KLS[1,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[1,0], KLS[1,1], 3)}),
-                ], style={'padding': '5px'}),
-
+                    html.Div([
+                        html.Label('Length:', style={'margin-right': '10px'}),
+                        dcc.Input(id='length-input', type='number', placeholder='Length', value=250.082, style={'margin-right': '20px'}),
+        
+                        html.Label('Beam:', style={'margin-right': '10px'}),
+                        dcc.Input(id='beam-input', type='number', placeholder='Beam', value=42.836 / 2, style={'margin-right': '20px'}),
+        
+                        html.Label('Draft:', style={'margin-right': '10px'}),
+                        dcc.Input(id='draft-input', type='number', placeholder='Draft', value=23.416, style={'margin-right': '20px'}),
+        
+                        html.Button('Random Design', id='generate-button', style={'height': '30px', 'fontSize': '16px'}),
+                    ], style={'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}),
+                ]),
+                html.Div(id='design-number', children="Design Number: 1"),
                 html.Div([
-                    html.Label('Parameter 3'),
-                    dcc.Slider(id='slider-3', min=KLS[2,0], max=KLS[2,1], step=0.01, value=KLS[2,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[2,0], KLS[2,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 4'),
-                    dcc.Slider(id='slider-4', min=KLS[3,0], max=KLS[3,1], step=0.01, value=KLS[3,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[3,0], KLS[3,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 5'),
-                    dcc.Slider(id='slider-5', min=KLS[4,0], max=KLS[4,1], step=0.01, value=KLS[4,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[4,0], KLS[4,1], 3)}),
-                ], style={'padding': '5px'}),
-                
-                html.Div([
-                    html.Label('Parameter 6'),
-                    dcc.Slider(id='slider-6', min=KLS[5,0], max=KLS[5,1], step=0.01, value=KLS[5,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[5,0], KLS[5,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 7'),
-                    dcc.Slider(id='slider-7', min=KLS[6,0], max=KLS[6,1], step=0.01, value=KLS[6,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[6,0], KLS[6,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 8'),
-                    dcc.Slider(id='slider-8', min=KLS[7,0], max=KLS[7,1], step=0.01, value=KLS[7,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[7,0], KLS[7,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 9'),
-                    dcc.Slider(id='slider-9', min=KLS[8,0], max=KLS[8,1], step=0.01, value=KLS[8,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[8,0], KLS[8,1], 3)}),
-                ], style={'padding': '5px'}),
-
-                html.Div([
-                    html.Label('Parameter 10'),
-                    dcc.Slider(id='slider-10', min=KLS[9,0], max=KLS[9,1], step=0.01, value=KLS[9,0], marks={i: {'label': str(i), 'style': {'color': 'rgba(0, 0, 0, 0)'}} for i in np.linspace(KLS[9,0], KLS[9,1], 3)}),
-                ], style={'padding': '5px'}),
-            ], style={'display': 'inline-block', 'width': '15%', 'vertical-align': 'top'}),
-        ], style={'display': 'flex', 'justifyContent': 'center'}),
-
-        html.Div([
-            html.Div([
-                html.Label('Length:', style={'margin-right': '10px'}),
-                dcc.Input(id='length-input', type='number', placeholder='Length', value=250.082, style={'margin-right': '20px'}),
-
-                html.Label('Beam:', style={'margin-right': '10px'}),
-                dcc.Input(id='beam-input', type='number', placeholder='Beam', value=42.836 / 2, style={'margin-right': '20px'}),
-
-                html.Label('Draft:', style={'margin-right': '10px'}),
-                dcc.Input(id='draft-input', type='number', placeholder='Draft', value=23.416, style={'margin-right': '20px'}),
-
-                html.Button('Random Design', id='generate-button', style={'height': '30px', 'fontSize': '16px'}),
-            ], style={'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}),
-        ]),
-        html.Div(id='design-number', children="Design Number: 1"),
-        html.Div([
-            dcc.Input(
-                id='message-input',
-                type='text',
-                placeholder='Message ShipHullGAN...',
-                style={'height': '25px', 'width': '60%', 'margin-top': '10px', 'margin-right': '10px', 'fontSize': '15px'}
-            ),
-            html.Button('Send Message', id='send-button', style={'height': '30px', 'fontSize': '16px'}),
-        ], style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center'}),
-        html.Div(
-            dcc.Textarea(
-                id='message-logs',
-                value="Message logs:\n",
-                style={'width': '70%', 'height': '100px', 'margin-top': '10px', 'fontSize': '16px', 'display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'},
-                readOnly=True
-            ),
-            style={'textAlign': 'center'}
-        ),
-    ])
+                    dcc.Input(
+                        id='message-input',
+                        type='text',
+                        placeholder='Message ShipHullGAN...',
+                        style={'height': '25px', 'width': '60%', 'margin-top': '10px', 'margin-right': '10px', 'fontSize': '15px'}
+                    ),
+                    html.Button('Send Message', id='send-button', style={'height': '30px', 'fontSize': '16px'}),
+                ], style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center'}),
+                html.Div(
+                    dcc.Textarea(
+                        id='message-logs',
+                        value="Message logs:\n",
+                        style={'width': '70%', 'height': '100px', 'margin-top': '10px', 'fontSize': '16px', 'display': 'block', 'margin-left': 'auto', 'margin-right': 'auto'},
+                        readOnly=True
+                    ),
+                    style={'textAlign': 'center'}
+                ),
+            ])
+        ]
+    )
 ])
 
 
