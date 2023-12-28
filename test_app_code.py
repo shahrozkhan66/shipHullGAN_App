@@ -154,7 +154,7 @@ initial_logs = "Message logs:\n"
 app.layout = html.Div([
     dcc.Loading(
         id="loading",
-        type="circle",  # can also use "default" or "cube"
+        type="cube",  # can also use "default" or "cube"
         children=[
             html.Div([
                 html.Div([
